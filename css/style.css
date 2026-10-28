@@ -1,0 +1,201 @@
+/* Estilo do formulário "Novo Cliente" (Bootstrap 4 + classes rl-*)
+   Inclua depois do CSS do Bootstrap:
+   <link rel="stylesheet" href="css/cliente-form.css">                        */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap");
+
+:root {
+    --rl-ink: #1d2b2a;
+    --rl-muted: #66726f;
+    --rl-paper: #f6f7f4;
+    --rl-card: #ffffff;
+    --rl-line: #d9dfdb;
+    --rl-accent: #1f6f5c;
+    --rl-accent-dark: #17564a;
+    --rl-focus: rgba(31, 111, 92, .22);
+    --rl-disabled: #eceeea;
+}
+
+body {
+    background: var(--rl-paper);
+    color: var(--rl-ink);
+    font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Título */
+h2 {
+    font-family: "Bricolage Grotesque", "Figtree", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -.01em;
+    margin: 1.5rem 0 1rem;
+}
+
+/* Formulário como uma ficha de cadastro */
+form[action="add.php"] {
+    background: var(--rl-card);
+    border: 1px solid var(--rl-line);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 2px rgba(29, 43, 42, .06);
+}
+
+form[action="add.php"] hr {
+    border-top: 1px solid var(--rl-line);
+    margin: 0 0 1.25rem;
+}
+
+/* Rótulos e campos */
+.form-group label {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--rl-ink);
+    margin-bottom: .3rem;
+}
+
+.form-control {
+    height: calc(2.5rem + 2px);
+    border: 1px solid var(--rl-line);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--rl-ink);
+    font-size: .95rem;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-control:hover {
+    border-color: #b9c3be;
+}
+
+.form-control:focus {
+    border-color: var(--rl-accent);
+    box-shadow: 0 0 0 .2rem var(--rl-focus);
+    outline: 0;
+}
+
+.form-control:disabled {
+    background: var(--rl-disabled);
+    color: var(--rl-muted);
+    cursor: not-allowed;
+}
+
+/* Campo de arquivo */
+input[type="file"].form-control {
+    height: auto;
+    padding: .55rem .75rem;
+    border-style: dashed;
+    background: var(--rl-paper);
+    cursor: pointer;
+}
+
+input[type="file"].form-control::file-selector-button {
+    margin-right: .75rem;
+    padding: .3rem .8rem;
+    border: 1px solid var(--rl-accent);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--rl-accent);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+input[type="file"].form-control::file-selector-button:hover {
+    background: var(--rl-accent);
+    color: #fff;
+}
+
+.rl-hint {
+    display: block;
+    margin-top: .35rem;
+    color: var(--rl-muted);
+    font-size: .8rem;
+}
+
+/* Prévia da imagem */
+.rl-current-image {
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .6rem;
+    border: 1px solid var(--rl-line);
+    border-radius: 8px;
+    background: var(--rl-paper);
+}
+
+.rl-current-image img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--rl-line);
+}
+
+.rl-current-image span {
+    color: var(--rl-muted);
+    font-size: .82rem;
+}
+
+/* Ações */
+#actions {
+    margin-top: .5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rl-line);
+}
+
+#actions .btn {
+    padding: .55rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+#actions .btn-secondary {
+    background: var(--rl-accent);
+    border-color: var(--rl-accent);
+    color: #fff;
+}
+
+#actions .btn-secondary:hover {
+    background: var(--rl-accent-dark);
+    border-color: var(--rl-accent-dark);
+}
+
+#actions .btn:focus,
+#actions .btn-secondary:focus {
+    box-shadow: 0 0 0 .2rem var(--rl-focus);
+}
+
+#actions .btn-light {
+    background: transparent;
+    border-color: var(--rl-line);
+    color: var(--rl-muted);
+}
+
+#actions .btn-light:hover {
+    background: var(--rl-disabled);
+    color: var(--rl-ink);
+}
+
+#actions .btn i {
+    margin-right: .35rem;
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    form[action="add.php"] {
+        padding: 1.1rem 1rem .75rem;
+        border-radius: 8px;
+    }
+
+    #actions .btn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
