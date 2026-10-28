@@ -1,11 +1,28 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . "/../config.php";
+
+if (empty($_SESSION["usuario_id"])) {
+    header("Location: " . BASEURL . "login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Site de Tecnologia</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLTUR</title>
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>css/all.min.css">
 </head>
+
+   
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Tecnologia Web</a>

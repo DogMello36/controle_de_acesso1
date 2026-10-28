@@ -1,196 +1,212 @@
-/* Estilo do formulário "Novo Cliente" (Bootstrap 4 + classes rl-*)
-   Inclua depois do CSS do Bootstrap:
-   <link rel="stylesheet" href="css/cliente-form.css">                        */
-
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap");
 
 :root {
-    --rl-ink: #1d2b2a;
-    --rl-muted: #66726f;
-    --rl-paper: #f6f7f4;
-    --rl-card: #ffffff;
-    --rl-line: #d9dfdb;
-    --rl-accent: #1f6f5c;
-    --rl-accent-dark: #17564a;
-    --rl-focus: rgba(31, 111, 92, .22);
-    --rl-disabled: #eceeea;
+    --ink: #1d2b2a;
+    --muted: #66726f;
+    --paper: #f6f7f4;
+    --card: #ffffff;
+    --line: #d9dfdb;
+    --accent: #1f6f5c;
+    --accent-dark: #17564a;
+    --focus: rgba(31, 111, 92, .22);
+    --erro-bg: #fbeceb;
+    --erro-line: #e7b4b0;
+    --erro-ink: #8a2a22;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
-    background: var(--rl-paper);
-    color: var(--rl-ink);
+    height: 100%;
+    margin: 0;
+}
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--paper);
+    color: var(--ink);
     font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* Título */
-h2 {
-    font-family: "Bricolage Grotesque", "Figtree", sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: -.01em;
-    margin: 1.5rem 0 1rem;
-}
-
-/* Formulário como uma ficha de cadastro */
-form[action="add.php"] {
-    background: var(--rl-card);
-    border: 1px solid var(--rl-line);
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.25rem 2rem 2rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent);
     border-radius: 10px;
-    padding: 1.5rem 1.75rem 1rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 1px 2px rgba(29, 43, 42, .06);
+    box-shadow: 0 1px 2px rgba(29, 43, 42, .06), 0 12px 32px rgba(29, 43, 42, .06);
 }
 
-form[action="add.php"] hr {
-    border-top: 1px solid var(--rl-line);
-    margin: 0 0 1.25rem;
+.login-card h1 {
+    margin: 0 0 .35rem;
+    font-family: "Bricolage Grotesque", "Figtree", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
 }
 
-/* Rótulos e campos */
-.form-group label {
+.login-sub {
+    margin: 0 0 1.5rem;
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.45;
+}
+
+/* Mensagem de erro */
+.login-erro {
+    margin-bottom: 1.1rem;
+    padding: .65rem .85rem;
+    background: var(--erro-bg);
+    border: 1px solid var(--erro-line);
+    border-radius: 6px;
+    color: var(--erro-ink);
+    font-size: .9rem;
+}
+
+/* Mensagem de sucesso */
+.login-ok {
+    margin-bottom: 1.1rem;
+    padding: .65rem .85rem;
+    background: #e8f3ef;
+    border: 1px solid #b5d7cc;
+    border-radius: 6px;
+    color: var(--accent-dark);
+    font-size: .9rem;
+}
+
+/* Campos */
+.campo {
+    margin-bottom: 1.1rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: .3rem;
     font-size: .85rem;
     font-weight: 600;
-    color: var(--rl-ink);
-    margin-bottom: .3rem;
 }
 
-.form-control {
-    height: calc(2.5rem + 2px);
-    border: 1px solid var(--rl-line);
-    border-radius: 6px;
+.campo input {
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 .8rem;
     background: #fff;
-    color: var(--rl-ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font: inherit;
     font-size: .95rem;
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 
-.form-control:hover {
+.campo input:hover {
     border-color: #b9c3be;
 }
 
-.form-control:focus {
-    border-color: var(--rl-accent);
-    box-shadow: 0 0 0 .2rem var(--rl-focus);
+.campo input:focus {
     outline: 0;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 .2rem var(--focus);
 }
 
-.form-control:disabled {
-    background: var(--rl-disabled);
-    color: var(--rl-muted);
-    cursor: not-allowed;
+/* Senha com botão mostrar/ocultar */
+.campo-senha {
+    position: relative;
 }
 
-/* Campo de arquivo */
-input[type="file"].form-control {
-    height: auto;
-    padding: .55rem .75rem;
-    border-style: dashed;
-    background: var(--rl-paper);
-    cursor: pointer;
+.campo-senha input {
+    padding-right: 5.2rem;
 }
 
-input[type="file"].form-control::file-selector-button {
-    margin-right: .75rem;
-    padding: .3rem .8rem;
-    border: 1px solid var(--rl-accent);
-    border-radius: 5px;
+.ver-senha {
+    position: absolute;
+    top: 50%;
+    right: .35rem;
+    transform: translateY(-50%);
+    padding: .35rem .6rem;
     background: transparent;
-    color: var(--rl-accent);
+    border: 0;
+    border-radius: 5px;
+    color: var(--accent);
+    font: inherit;
+    font-size: .82rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background .15s ease, color .15s ease;
 }
 
-input[type="file"].form-control::file-selector-button:hover {
-    background: var(--rl-accent);
+.ver-senha:hover {
+    background: var(--paper);
+}
+
+.ver-senha:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 .15rem var(--focus);
+}
+
+/* Botão principal */
+.btn-entrar {
+    width: 100%;
+    height: 2.9rem;
+    margin-top: .4rem;
+    background: var(--accent);
+    border: 0;
+    border-radius: 6px;
     color: #fff;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, box-shadow .15s ease;
 }
 
-.rl-hint {
+.btn-entrar:hover {
+    background: var(--accent-dark);
+}
+
+.btn-entrar:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem var(--focus);
+}
+
+.campo-dica {
     display: block;
-    margin-top: .35rem;
-    color: var(--rl-muted);
+    margin-top: .3rem;
+    color: var(--muted);
     font-size: .8rem;
 }
 
-/* Prévia da imagem */
-.rl-current-image {
-    align-items: center;
-    gap: .75rem;
-    margin-top: .75rem;
-    padding: .6rem;
-    border: 1px solid var(--rl-line);
-    border-radius: 8px;
-    background: var(--rl-paper);
+.campo input[type="date"] {
+    font-family: inherit;
 }
 
-.rl-current-image img {
-    width: 72px;
-    height: 72px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid var(--rl-line);
+.login-link {
+    margin: 1.4rem 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
 }
 
-.rl-current-image span {
-    color: var(--rl-muted);
-    font-size: .82rem;
-}
-
-/* Ações */
-#actions {
-    margin-top: .5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rl-line);
-}
-
-#actions .btn {
-    padding: .55rem 1.2rem;
-    border-radius: 6px;
+.login-link a {
+    color: var(--accent);
     font-weight: 600;
-    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+    text-decoration: none;
 }
 
-#actions .btn-secondary {
-    background: var(--rl-accent);
-    border-color: var(--rl-accent);
-    color: #fff;
+.login-link a:hover {
+    text-decoration: underline;
 }
 
-#actions .btn-secondary:hover {
-    background: var(--rl-accent-dark);
-    border-color: var(--rl-accent-dark);
-}
-
-#actions .btn:focus,
-#actions .btn-secondary:focus {
-    box-shadow: 0 0 0 .2rem var(--rl-focus);
-}
-
-#actions .btn-light {
-    background: transparent;
-    border-color: var(--rl-line);
-    color: var(--rl-muted);
-}
-
-#actions .btn-light:hover {
-    background: var(--rl-disabled);
-    color: var(--rl-ink);
-}
-
-#actions .btn i {
-    margin-right: .35rem;
-}
-
-/* Mobile */
-@media (max-width: 767.98px) {
-    form[action="add.php"] {
-        padding: 1.1rem 1rem .75rem;
-        border-radius: 8px;
-    }
-
-    #actions .btn {
-        width: 100%;
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.75rem 1.25rem 1.5rem;
     }
 }
 
