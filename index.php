@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="login-erro" role="alert"><?= htmlspecialchars($erro, ENT_QUOTES, "UTF-8") ?></div>
         <?php endif; ?>
 
-        <form method="post" action="<?= BASEURL ?>login.php" autocomplete="on" novalidate>
+        <form method="post" action="<?= BASEURL ?>index.php" autocomplete="on" novalidate>
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION["csrf"]) ?>">
 
             <div class="campo">

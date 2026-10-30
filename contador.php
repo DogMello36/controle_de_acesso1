@@ -1,10 +1,17 @@
-﻿<?php 
-// Obtêm o número de visitas Atual --> lê o arquivo
-$numero_visitas_atual = file_get_contents('arq.in');//lê o conteúdo do arquivo arq.in
+﻿<?php
+// contador.php (UTF-8 sem BOM)
+function numero_visitas(): int
+{
+    $arq = __DIR__ . '/../arq.in';   // ajuste: mesmo arquivo para todas as páginas
+    $fp  = fopen($arq, 'c+');
+    flock($fp, LOCK_EX);
 
- 
-file_put_contents('arq.in', ++$numero_visitas_atual); //gravar o conteúdo do arquivo arq.in
+    $n = (int) stream_get_contents($fp) + 1;
+    ftruncate($fp, 0);
+    rewind($fp);
+    fwrite($fp, (string) $n);
 
-// Mostra o número de visitas
-echo '<h1>Nº de Visitas:'.file_get_contents('arq.in').'</h1>';
-?>
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return $n;
+}

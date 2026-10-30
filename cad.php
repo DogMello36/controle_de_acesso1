@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $ins->execute([$nome, $birthdate, $senha]);
  
                 $_SESSION["flash_ok"] = "Cadastro realizado. Entre com seu usuário e senha.";
-                header("Location: " . BASEURL . "login.php");
+                header("Location: " . BASEURL . "index.php");
                 exit;
             }
         } catch (PDOException $e) {
@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit" class="btn-entrar">Criar conta</button>
         </form>
  
-        <p class="login-link">Já tem conta? <a href="<?= BASEURL ?>login.php">Entrar</a></p>
+        <p class="login-link">Já tem conta? <a href="<?= BASEURL ?>index.php">Entrar</a></p>
     </main>
  
     <script>
